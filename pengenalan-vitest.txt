@@ -1,0 +1,78 @@
+Pengenalan Vitest
+vitest adalah unit test framewrok yang sangat cepat yang dipersembahkan olehvite
+vitest mirip dengan uunit test framewrok lainnya seperti jest,mocha dan lain-lain
+vitest secara default mendukung javascript module
+vitest juga terintregrasi dengan baik dengan typescript
+
+Kenapa Vitest
+vitest sangat cepat mendukung parallel testing sehingga bisa menjalankan unit test dengan sangat cepat 
+compatibel dengan jest sehingga kita tidak perlu belajar lagi jika sudah terbiasa menggunakan jest
+vitest sangat ringan dan sangat berhati-hati ketika menambahkan dependency agar tetap cepat terintregrasi baik dengan vite
+
+Menjalankan Unit test
+Default Configuration 
+secara default kita tidak butuh menambahkan konfigurasi apapun ketika menggunakan vitest 
+setelah menginstall vitest kita langsung bisa menggunakan vitest untuk menjalankan file unit test 
+sama seperti jest,vitest secara default akan menjalankan unit test untuk file dengan akhiran test.js/ts atau spec.js/ts
+untuk menjalankan unit test menggunakan vitest,kita bisa menggunakan perintah: npx vitest --run nama/file.test.js
+
+Watch Mode 
+vitest memiliki fitur watch mode,yaitu bisa mendeteksi perubahan yang terjadi pada file unit test dan secara otomatis akan menjalankan unit test  ulang
+kita bisa menggunakan perintah berikut untuk menjalankan vitest dalam wath mode: npx vitest
+
+Configuration
+walaupun vitest tidak butuh konfigurasi file untuk digunakan secara default 
+namun kadang kita ingin menambahkan konfigurasi yang berbeda dari defaultnya
+kita  isa menambahkan file vitest.config.ts
+
+Jest Compatible
+API yang dibuat vitest kompatibel dengan API jest,dengan begitu untuk menggunkan vitest sama seperti kita mengunkan jest 
+namun pada kode sebelumnya kita melakukan import describe,it dan excpect dari package vitest 
+sedangkan di jest secara default function-function tersebut sudah terdaftar di global scope 
+kita juga bisa melakukan hal yang sama dengan mengubah kkonfigurasi dari vitest
+
+Fitur Jest lainnya
+hampir semua fitur jest didukung oleh vitest dan cara penggunannya sam seperti:
+-timeout pada test function
+-concurrent test
+-skip test
+dan lain-lain
+
+multi-Threading 
+secara default vitest menjalankan unit test menggunakan multi-threading  dimana unit test akan di jalankan pada worker thread berebeda dari thread utama 
+walaupun dijalankan di worker thread yang berbeda namun tetap secara default vitest akan menjalankan unit test satu persatu karena kebanyakan programmer membuat unit test yang sequential
+namun pada kasus jika kita tidak berjalan secara sequential kita bisa menggunakan fitur concurrent test seperti fdi jest.
+
+Chai
+Jest excpect
+saat kita menggunakan excpect di vitest cara penggunannya mirip dengan di jest excpect 
+namun selain kompatible dengan jest excpect vitest juga menggunakan liberary cahi untuk fitur excpect
+
+Chai
+chai adalah test assertions yang populer karena penggunannya sangat mudah dan mudah juga untuk dibaca chai memiliki fitur excpect dan juga asseert dan kita bisa import dari package vitest dan secara otomatis kita bisa menggunakan fitur excpect dan assert chai  
+
+Mocking 
+seperti di jest mocking yaitu membuat object tiruan/palsu sehingga memudahkan ketika kita mau melakukan test interaksi dengan object lain 
+vitest juga mendukung mocking 
+vitest mocking penggunannya kompatible dengan penggunaan jest mocking sehingga kita bisa melakukan mock function,mock module dan mock class 
+
+Benchmarking
+salah satu fitur yang menarik di vitest asalah Benchmarking
+benchmarking adalah melakukan performance test terhadap kode yang kita buat 
+benchmarking bisa digunakan untuk menjalankan kode kita berulang kali sehingga kita bisa melihat peerforma kecepatan dari kode yang sudah kita buat
+untuk membuhat benchmark kita harus menggunakan format file dengan akhiran .bench.ts/js atau .benchmark.js/ts
+dan ,untuk menjalankan benchmarking kita harus menggunakan perintah: npx vitest benc--run namfilenya
+PERLU DIINGAT! fitur brenchmarking masih exsperimental jadi bisa dimungkinkan kedepannya  akan berubah 
+
+Coverage
+sama seperti di jest vitest juga memiliki fitur coverage untuk mendeteksi coverage unit test yang sudah kita buat 
+dengan begitu kita bisa liat kode mana yang belum teer-cover oleh unit test yang sudah kita buat 
+vitest support liberary V8 atau Istambul sebagai liberary untuk melakukan code coverage 
+kita bisa memilih liberary apa yang mau kita gunakan pada file konfigurasi namun secara default yang di pilih adalah V8 
+untik melakukan code coverage tambahkan --coverage ketika menjalankan vitest misalkan: npx vitest --run --coverage namafilenya
+
+Vites UI 
+salah satu fitur yang menarik di vitest adalah vitest UI 
+vitest UI adalah web dashbord untuk memonitor unit test yang kita buat, mana yang sukses dan mana yang gagal
+kita juga bisa menjalankan unit test melauli web yang sudah di sediakan oleh vitest UI
+kita bisa menjalankan vitest UI ketika menjalankan vitest dengan tambahkan parameter --ui misalkan: npx vitest --ui 
